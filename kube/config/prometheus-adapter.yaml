@@ -1,0 +1,19 @@
+prometheus:
+  url: http://prometheus-server.default.svc
+  port: 80
+
+rules:
+  default: false
+  custom:
+  - seriesQuery: '{__name__= "sem_metric"}'
+    seriesFilters: []
+    resources:
+      overrides:
+        kubernetes_namespace:
+          resource: namespace
+        kubernetes_pod_name:
+          resource: pod
+    name:
+      matches: "sem_metric"
+      as: ""
+    metricsQuery: <<.Series>>{<<.LabelMatchers>>,container_name!="POD"}

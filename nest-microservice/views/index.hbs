@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>SEM - Kubernetes</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="my-4">Willkommen beim Resource-Testing Microservice!</h1>
+            <h2>Folgende Endpunkte sind verfügbar:</h2>
+            <table class="table table-striped mt-4">
+                <thead>
+                <tr>
+                    <th>Endpunkt</th>
+                    <th>Beschreibung</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td id="cpu-endpoint"></td>
+                    <td>Erhöht die CPU-Last.</td>
+                </tr>
+                <tr>
+                    <td id="memory-endpoint"></td>
+                    <td>Erhöht die Memory-Nutzung.</td>
+                </tr>
+                <tr>
+                    <td id="metrics-endpoint"></td>
+                    <td>Zeige Custom-Metrics.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('cpu-endpoint').innerHTML = `<a href="${window.location.href}test/cpu">CPU-Test</a>`;
+    document.getElementById('memory-endpoint').innerHTML = `<a href="${window.location.href}test/memory">Memory-Test</a>`;
+    document.getElementById('metrics-endpoint').innerHTML = `<a href="${window.location.href}metrics">Metrics</a>`;
+</script>
+</body>
+</html>

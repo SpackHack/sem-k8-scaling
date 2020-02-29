@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resourcetest
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: resourcetest
+  template:
+    metadata:
+      labels:
+        app: resourcetest
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /metrics
+        prometheus.io/port: "3000"
+    spec:
+      containers:
+        - name: resourcetest
+          image: eu.gcr.io/sem-hdm/nest:3.1.3
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+          ports:
+            - containerPort: 3000

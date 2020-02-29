@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: resourcetest-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: resourcetest
+  ports:
+  - nodePort: 30048
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
